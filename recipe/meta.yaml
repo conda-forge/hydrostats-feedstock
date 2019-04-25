@@ -1,6 +1,6 @@
 {% set name = "hydrostats" %}
-{% set version = "0.77" %}
-{% set sha256 = "a461c7cc81f6782f54aad24d862ade0fa1029ac2106ea882ade7aa1d9a19ee9e" %}
+{% set version = "0.78" %}
+{% set sha256 = "d79255a1aa1150cdd67410ee856dbb726d8609627aa5bd81083e0869b7303b28" %}
 
 package:
   name: {{ name|lower }}
