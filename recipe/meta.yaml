@@ -1,6 +1,6 @@
 {% set name = "hydrostats" %}
-{% set version = "0.78" %}
-{% set sha256 = "d79255a1aa1150cdd67410ee856dbb726d8609627aa5bd81083e0869b7303b28" %}
+{% set version = "1.0.0" %}
+{% set sha256 = "db699e9a198e724e4f663a1cdad08afe04fb63dcade429d00c96af5d6ddb29ba" %}
 
 package:
   name: {{ name|lower }}
@@ -12,9 +12,9 @@ source:
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
-  
+
 
 requirements:
   host:
@@ -48,7 +48,7 @@ about:
   summary: 'Tools for use in comparison studies, specifically for use in the field of hydrology'
   doc_url: https://byu-hydroinformatics.github.io/Hydrostats/
   dev_url: https://github.com/BYU-Hydroinformatics/Hydrostats
-  
+
 extra:
   recipe-maintainers:
     - pythonweb2
