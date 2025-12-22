@@ -19,9 +19,9 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
-    - python
+    - python >={{ python_min }}
     - numpy
     - scipy
     - numba
@@ -30,6 +30,8 @@ requirements:
     - hydroerr
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - hydrostats
     - hydrostats.analyze
