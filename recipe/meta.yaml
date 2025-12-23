@@ -1,6 +1,5 @@
 {% set name = "hydrostats" %}
 {% set version = "1.0.0" %}
-{% set sha256 = "db699e9a198e724e4f663a1cdad08afe04fb63dcade429d00c96af5d6ddb29ba" %}
 
 package:
   name: {{ name|lower }}
@@ -8,30 +7,28 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: db699e9a198e724e4f663a1cdad08afe04fb63dcade429d00c96af5d6ddb29ba
 
 build:
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
-
 
 requirements:
   host:
+    - python >=3.10,<=3.15
+    - uv-build >=0.9.10,<0.10.0
     - pip
-    - python {{ python_min }}
   run:
-    - python >={{ python_min }}
-    - numpy
-    - scipy
-    - numba
-    - pandas
-    - matplotlib-base
-    - hydroerr
+    - python >=3.10,<=3.15
+    - hydroerr >=2.0,<3.dev0
+    - matplotlib-base >=3.0,<4.dev0
+    - numba >=0.63.0,<0.64.dev0
+    - numpy >=2.0,<3.dev0
+    - pandas >=2.0,<3.dev0
+    - scipy >=1.0,<2.dev0
 
 test:
-  requires:
-    - python {{ python_min }}
   imports:
     - hydrostats
     - hydrostats.analyze
@@ -39,14 +36,18 @@ test:
     - hydrostats.ens_metrics
     - hydrostats.metrics
     - hydrostats.visual
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: https://github.com/BYU-Hydroinformatics/Hydrostats
+  summary: Tools for use in comparison studies, specifically for use in the field of hydrology
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: 'Tools for use in comparison studies, specifically for use in the field of hydrology'
-  doc_url: https://byu-hydroinformatics.github.io/Hydrostats/
+  home: https://github.com/BYU-Hydroinformatics/Hydrostats
+  doc_url: https://byu-hydroinformatics.github.io/Hydrostats
   dev_url: https://github.com/BYU-Hydroinformatics/Hydrostats
 
 extra:
