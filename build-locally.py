@@ -90,19 +90,7 @@ def verify_config(ns):
             "to download the SDK automatically to '$PWD/SDKs/MacOSX<ver>.sdk'. "
             "Note: OSX_SDK_DIR must be set to an absolute path. "
             "Setting this variable implies agreement to the licensing terms of the SDK by Apple."
-    # Remove the following, as implemented
-    if ns.config.startswith("win"):
-        raise ValueError(
-            f"only Linux/macOS configs currently supported, got {ns.config}"
         )
-    elif ns.config.startswith("osx"):
-        if "OSX_SDK_DIR" not in os.environ:
-            raise RuntimeError(
-                "Need OSX_SDK_DIR env variable set. Run 'export OSX_SDK_DIR=$PWD/SDKs' "
-                "to download the SDK automatically to '$PWD/SDKs/MacOSX<ver>.sdk'. "
-                "Note: OSX_SDK_DIR must be set to an absolute path. "
-                "Setting this variable implies agreement to the licensing terms of the SDK by Apple."
-            )
 
 
 def main(args=None):
@@ -118,9 +106,7 @@ def main(args=None):
         action="store_true",
         help="Setup debug environment using `conda debug`",
     )
-    p.add_argument(
-        "--output-id", help="If running debug, specify the output to setup."
-    )
+    p.add_argument("--output-id", help="If running debug, specify the output to setup.")
 
     ns = p.parse_args(args=args)
     verify_config(ns)
