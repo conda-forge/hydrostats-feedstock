@@ -11,7 +11,7 @@ Summary: Tools for use in comparison studies, specifically for use in the field 
 
 Development: https://github.com/BYU-Hydroinformatics/Hydrostats
 
-Documentation: https://byu-hydroinformatics.github.io/Hydrostats/
+Documentation: https://hydrostats.readthedocs.io/en/stable/
 
 Current build status
 ====================
